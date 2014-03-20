@@ -1,8 +1,8 @@
 package com.lazerycode.selenium;
 
 public enum BrowserType {
-  FIREFOX("firefox"),
   CHROME("chrome"),
+  FIREFOX("firefox"),
   IE("ie"),
   SAFARI("safari"),
   OPERA("opera"),

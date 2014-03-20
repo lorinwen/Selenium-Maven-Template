@@ -1,6 +1,7 @@
 package com.lazerycode.selenium;
 
 import com.opera.core.systems.OperaDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -131,11 +132,11 @@ public class SeleniumBase {
             case CHROME:
                 if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
                     if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/64bit/2.8/chromedriver.exe");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/64bit/2.9/chromedriver.exe");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/64bit/2.8/chromedriver");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/2.9/chromedriver");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/64bit/2.8/chromedriver");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/64bit/2.9/chromedriver");
                     }
                 } else {
                     if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
@@ -172,6 +173,12 @@ public class SeleniumBase {
                 return new PhantomJSDriver(generateDesiredCapabilities(browserType));
             default:
                 return new HtmlUnitDriver(generateDesiredCapabilities(browserType));
+        }
+    }
+
+    protected void javascriptExecute(String function,WebDriver driver){
+        if (driver instanceof JavascriptExecutor){
+            ((JavascriptExecutor) driver).executeScript(function);
         }
     }
 }
