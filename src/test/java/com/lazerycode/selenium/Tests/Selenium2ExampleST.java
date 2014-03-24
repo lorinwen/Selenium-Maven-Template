@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
@@ -66,24 +67,23 @@ public class Selenium2ExampleST extends SeleniumBase {
 
        WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'forms\']/li[1]"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'forms\']/li[1]")).click();
 
         WebElement element1 = driver.findElement(By.xpath("//*[@id='quickyform_name']"));
         element1.clear();
         element1.sendKeys(Titulo);
 
         //Gestión de selectores del Pop-Up
-        WebElement element2 = driver.findElement(By.xpath("//*[@id=\"s2id_quickyform_language\"]/a/div/b"));
-        element2.click();
-        WebElement element3 = driver.findElement(By.xpath("/html/body/div[5]/ul/li[1]/div"));
-        element3.click();
-        WebElement element4 = driver.findElement(By.xpath("//*[@id=\"s2id_quickyform_category\"]/a/div/b"));
-        element4.click();
-        WebElement element5 = driver.findElement(By.xpath("/html/body/div[5]/ul/li[1]/div"));
-        element5.click();
-        WebElement element6 = driver.findElement(By.xpath("//*[@id=\'add-form\']/form/div[4]/input"));
-        element6.click();
+        driver.findElement(By.xpath("//*[@id=\"s2id_quickyform_language\"]/a/div/b")).click();
+        driver.findElement(By.xpath("/html/body/div[5]/ul/li[1]/div")).click();
+        driver.findElement(By.xpath("//*[@id=\"s2id_quickyform_category\"]/a/div/b")).click();
+        driver.findElement(By.xpath("/html/body/div[5]/ul/li[1]/div")).click();
+        driver.findElement(By.xpath("//*[@id=\'add-form\']/form/div[4]/input")).click();
+    }
+
+    public void deleteFirstForm() {
+        driver.findElement(By.xpath("//*[@id='forms']/li[2]/ul/li[4]/a")).click();
+        driver.findElement(By.xpath("//*[@id='dialog-ok']")).click();
 
     }
 
@@ -92,13 +92,11 @@ public class Selenium2ExampleST extends SeleniumBase {
         //Añade welcome screen
         WebDriver driver = this.driver;
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[1]/li[1]/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[1]/li[1]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
-        WebElement element3 = driver.findElement(By.xpath("//*[@id=\'submit\']/span"));
-        element3.click();
+        driver.findElement(By.xpath("//*[@id=\'submit\']/span")).click();
         //Sale del Iframe
         driver.switchTo().window(driver.getWindowHandle());
     }
@@ -109,18 +107,16 @@ public class Selenium2ExampleST extends SeleniumBase {
         //Añade thank you screen
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.linkText ("+ Add Questions"));
-        element.click();
+        driver.findElement(By.linkText ("+ Add Questions")).click();
 
-        WebElement element1 = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[1]/li[2]/span"));
-        element1.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[1]/li[2]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
         //Sale del Iframe
         driver.switchTo().window(driver.getWindowHandle());
+
     }
 
     public void ShortText(){
@@ -138,10 +134,10 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
 
@@ -149,8 +145,7 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[3]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[3]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -160,10 +155,10 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
 
@@ -171,8 +166,7 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[5]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[5]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -182,10 +176,10 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
 
@@ -193,8 +187,7 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[9]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[9]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -204,10 +197,10 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
 
@@ -215,8 +208,7 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[13]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[13]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -226,10 +218,10 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
 
@@ -237,8 +229,7 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[14]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[14]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -248,18 +239,17 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
     public void Rating(){
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[10]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[10]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -269,10 +259,10 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
 
     }
 
@@ -280,8 +270,7 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         WebDriver driver = this.driver;
 
-        WebElement element = driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[8]/span"));
-        element.click();
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[8]/span")).click();
 
         WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
         driver.switchTo().frame(iframe);
@@ -291,43 +280,46 @@ public class Selenium2ExampleST extends SeleniumBase {
 
         driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
 
-        WebElement element2 = driver.findElement(By.xpath("//*[@id='submit']/span"));
-        element2.click();
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
 
         driver.switchTo().window(driver.getWindowHandle());
 
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
+
+
     }
 
+    public void Dropdown(){
+
+        WebDriver driver = this.driver;
+
+        driver.findElement(By.xpath("//*[@id=\'sidebar\']/div[1]/div/ul[2]/li[7]/span")).click();
+
+        WebElement iframe = driver.findElement(By.cssSelector("#popup > iframe"));
+        driver.switchTo().frame(iframe);
+
+        //utilizamos función javascript para rellenar el IFRAME
+        super.javascriptExecute("$('#dropdown_question').val('This is a Dropdown question!!')",driver);
+
+        driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
+
+        WebElement element2 = driver.findElement(By.xpath("//*[@id=\'dropdown_options\']"));
+
+        // Enter something
+        element2.clear();
+        element2.sendKeys("uno \n dos \n tres \n cuatro \n cinco \n seis \n siete \n ocho");
+
+        driver.findElement(By.xpath("//*[@id='submit']/span")).click();
+
+        driver.switchTo().window(driver.getWindowHandle());
+        driver.findElement(By.xpath("//*[@id=\'header\']/div[2]/ul/li[1]/a")).click();
+
+    }
 
 
     @Test
     public void TypeformExample() {
         TypeformLogin("lorinwen10@gmail.com","waterpolo10");
-
-
-
-/* HTTPS De DANI
-
-        DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-        HttpPost post = new HttpPost("https://admin.typeform.com/form/delete/70822");
-        try{
-            HttpResponse response = defaultHttpClient.execute(post);
-
-            int statuscode = response.getStatusLine().getStatusCode();
-            System.out.println(statuscode);
-            System.out.println(response.toString());
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally
-        {
-            //Important: Close the connect
-            defaultHttpClient.getConnectionManager().shutdown();
-        }
-
-*/
-
         CreateNewTypeform("New test with selenium");
         AddThankyou();
         AddWelcome();
@@ -339,6 +331,7 @@ public class Selenium2ExampleST extends SeleniumBase {
         //Website();
         //Rating();
         YesNo();
-
+        //Dropdown();
+        deleteFirstForm();
     }
 }
