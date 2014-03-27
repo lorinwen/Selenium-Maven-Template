@@ -3,6 +3,7 @@ package com.lazerycode.selenium.Tests;
 import com.lazerycode.selenium.ScreenshotListener;
 import com.lazerycode.selenium.SeleniumBase;
 import com.sun.jna.platform.win32.Sspi;
+import com.sun.tools.javac.comp.Enter;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
@@ -17,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.openqa.selenium.Keys;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,7 +34,7 @@ public class Selenium2ExampleST extends SeleniumBase {
         this.driver = getDriver();
     }
 
-       public void TypeformLogin(String Username, String Password) {
+          public void TypeformLogin(String Username, String Password) {
         // login into Typeform properly
         WebDriver driver = this.driver;
 
@@ -58,7 +60,41 @@ public class Selenium2ExampleST extends SeleniumBase {
         element.submit();
 
         // Check the title of the page
-        System.out.println("Page title is first: " + driver.getTitle());
+        System.out.println("Page title is: " + driver.getTitle());
+    }
+
+    public void ResponseTypeform() {
+        // entrar en un Typeform y responderlo
+        WebDriver driver = this.driver;
+
+        // And now use this to visit Typeform (HAY QUE COGER EL UID POR PARÁMETRO)
+        driver.get("https://lorinwen2046.typeform.com/to/KGeprZ");
+
+
+        // Haceclick para entrar en el form
+        driver.findElement(By.xpath("//*[@id=\'50435\']/div[1]/div/div[3]/div[1]")).click();
+        driver.manage().timeouts().setScriptTimeout(3,TimeUnit.SECONDS);
+        //WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='50435']/div[1]/div/div[3]/div[1]")));
+
+
+        WebElement element = driver.findElement(By.xpath("//*[@id=\'634783\']/div/div[3]/div/div[1]/div[1]/div/input"));
+        element.sendKeys("Jordi Tomás Domenech");
+        driver.manage().timeouts().setScriptTimeout(3,TimeUnit.SECONDS);
+
+
+        driver.findElement(By.xpath("//*[@id='634783']/div/div[3]/div/div[4]/div[1]/div/span[2]")).sendKeys(Keys.ENTER);
+
+
+        //driver.manage().timeouts().setScriptTimeout(2,TimeUnit.SECONDS);
+        //driver.findElement(By.xpath("//*[@id=\'634783\']/div/div[3]/div/div[4]/div[1]/div/span[2]")).click();
+
+
+
+
+
+
+        // Check the title of the page
+        System.out.println("Page title is: " + driver.getTitle());
     }
 
     public void CreateNewTypeform(String Titulo) {
@@ -319,10 +355,11 @@ public class Selenium2ExampleST extends SeleniumBase {
 
     @Test
     public void TypeformExample() {
-        TypeformLogin("lorinwen10@gmail.com","waterpolo10");
-        CreateNewTypeform("New test with selenium");
-        AddThankyou();
-        AddWelcome();
+        ResponseTypeform();
+        //TypeformLogin("lorinwen10@gmail.com","waterpolo10");
+        //CreateNewTypeform("New test with selenium");
+       // AddThankyou();
+        //AddWelcome();
         //ShortText();
         //LongText();
         //Statement();
@@ -330,8 +367,8 @@ public class Selenium2ExampleST extends SeleniumBase {
         //Number();
         //Website();
         //Rating();
-        YesNo();
+       // YesNo();
         //Dropdown();
-        deleteFirstForm();
+        //deleteFirstForm();
     }
 }
